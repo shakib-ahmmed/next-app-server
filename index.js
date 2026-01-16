@@ -31,4 +31,11 @@ app.post("/items", upload.single("image"), (req, res) => {
 // GET all items
 app.get("/items", (req, res) => res.json(items));
 
+app.get("/items/:id", (req, res) => {
+    const found = items.find(i => i.id === Number(req.params.id));
+    if (!found) return res.status(404).json({ error: "Item not found" });
+    res.json(found);
+});
+
+
 app.listen(4000, () => console.log("🚀 Express API running at http://localhost:4000"));
