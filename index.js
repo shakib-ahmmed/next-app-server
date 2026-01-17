@@ -16,7 +16,8 @@ const port = process.env.PORT || 5000;
 // ---------------- CORS ----------------
 const allowedOrigins = [
     "http://localhost:3000",
-    "https://your-frontend.vercel.app"
+    "https://next-app-front-end.vercel.app",
+    "https://next-app-front-nfbgcl7b5-shakib-ahmmeds-projects.vercel.app"
 ];
 
 app.use(cors({
@@ -68,7 +69,7 @@ app.get("/items", async (req, res) => {
 app.get("/items/:id", async (req, res) => {
     try {
         const { id } = req.params;
-        
+
         if (!ObjectId.isValid(id)) {
             return res.status(400).json({ error: "Invalid item ID" });
         }
